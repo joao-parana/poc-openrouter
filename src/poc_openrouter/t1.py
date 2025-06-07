@@ -2,6 +2,7 @@ import requests
 import json
 import os
 
+DS_KEY = "DeepSeek API KEy from environment (MacOS M3)"
 OR_KEY = os.getenv("OR_KEY") # OpenRouter API Key
 response = requests.post(
   url="https://openrouter.ai/api/v1/chat/completions",
