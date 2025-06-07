@@ -2,16 +2,18 @@ import requests
 import json
 import os
 
-OR_KEY = os.getenv("OR_KEY") # OpenRouter API Key
+DS_KEY = os.getenv("DS_KEY") # DeepSeek API Key
 response = requests.post(
-  url="https://openrouter.ai/api/v1/chat/completions",
+  url="https://api.deepseek.com/chat/completions",
   headers={
-    "Authorization": f"Bearer {OR_KEY}",
+    "Authorization": f"Bearer {DS_KEY}",
+    "Content-Type": "application/json",
     # "HTTP-Referer": "<YOUR_SITE_URL>", # Optional. Site URL for rankings on openrouter.ai.
     # "X-Title": "<YOUR_SITE_NAME>", # Optional. Site title for rankings on openrouter.ai.
   },
   data=json.dumps({
-    "model": "deepseek/deepseek-r1-0528:free",  # Optional
+    # Optional deepseek-reasoner or deepseek-chat
+    "model": "deepseek-reasoner",
     "messages": [
       {
         "role": "user",

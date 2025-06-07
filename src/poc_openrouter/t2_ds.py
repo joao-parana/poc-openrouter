@@ -4,11 +4,12 @@ from datetime import datetime, timedelta, timezone
 from openai import OpenAI
 
 start_time = datetime.now(timezone.utc)
-OR_KEY = os.getenv("OR_KEY") # OpenRouter API Key
-client = OpenAI(api_key=OR_KEY, base_url="https://openrouter.ai/api/v1/")
+DS_KEY = os.getenv("DS_KEY") # DeepSeek API Key
+client = OpenAI(api_key=DS_KEY, base_url="https://api.deepseek.com")
 
 response = client.chat.completions.create(
-    model="deepseek/deepseek-r1-0528:free",
+    # Optional deepseek-reasoner or deepseek-chat
+    model="deepseek-reasoner",
     messages=[
         {"role": "system", "content": "You are a helpful assistant"},
         {"role": "user", "content": "Qual é o significado da vida?"},
