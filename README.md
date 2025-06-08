@@ -19,7 +19,9 @@ The alternative would be to have a reasonable amount of money to use models from
 python3 -m pip install -e .
 ```
 
-## Example
+## Examples
+
+### Simple Toy example
 
 ```python
 import requests
@@ -46,6 +48,10 @@ response = requests.post(
 )
 print(response.json())
 ```
+
+### ReAct Paper Example
+
+![docs/ReAct-01.png](docs/ReAct-01.png)
 
 ## License
 

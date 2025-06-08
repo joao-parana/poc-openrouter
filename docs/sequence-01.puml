@@ -1,0 +1,40 @@
+@startuml ReAct Pattern
+
+actor User
+participant "Agent" as agent
+participant "OpenAI Client" as client
+participant "Known Actions" as actions
+participant "Action Handler" as handler
+
+User -> agent: question
+activate agent
+
+loop max_turns times
+    agent -> client: execute()
+    activate client
+    client --> agent: completion
+    deactivate client
+    
+    agent -> agent: parse actions
+    
+    alt has actions
+        agent -> actions: lookup action
+        activate actions
+        actions --> agent: action function
+        deactivate actions
+        
+        agent -> handler: execute action
+        activate handler
+        handler --> agent: observation
+        deactivate handler
+        
+        agent -> agent: update next_prompt
+    else no actions
+        agent --> User: final answer
+        break
+    end
+end
+
+deactivate agent
+
+@enduml

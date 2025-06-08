@@ -6,5 +6,5 @@ set -e
 # jupyter lab build # Execute na primeira vez
 jupyter lab --notebook-dir=$PWD --port=8389 --no-browser
 # sleep 3
-echo "`date` - gerando a configuração"
-jupyter lab --generate-config
+# echo "`date` - gerando a configuração"
+# jupyter lab --generate-config
