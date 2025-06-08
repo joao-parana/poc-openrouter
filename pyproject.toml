@@ -18,7 +18,19 @@ classifiers = [
     "Programming Language :: Python :: Implementation :: CPython",
     "Programming Language :: Python :: Implementation :: PyPy",
 ]
-dependencies = ["requests", "openai", "langchain", "langgraph"]
+dependencies = [
+    "requests",
+    # Inicio do grupo de modulos do Jupyter Lab
+    "jupyterlab",
+    "jupyter-server-fileid",
+    "jupyter_server_ydoc",
+    "nbclassic",
+    "notebook",
+    # Fim do grupo de modulos do Jupyter Lab
+    "openai",
+    "langchain",
+    "langgraph",
+]
 
 [project.urls]
 Documentation = "https://github.com/U.N. Owen/poc-openrouter#readme"
