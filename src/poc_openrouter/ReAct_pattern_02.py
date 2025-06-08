@@ -2,10 +2,7 @@
 # coding: utf-8
 # # Lesson 1: Simple ReAct Agent from Scratch
 # based on https://til.simonwillison.net/llms/python-react-pattern Blog post
-import sys
-import openai
 import re
-import httpx
 import os
 # from dotenv import load_dotenv
 from datetime import datetime, timedelta, timezone
@@ -49,11 +46,11 @@ class Agent:
     def execute(self):
         completion = client.chat.completions.create(
                         model="deepseek-reasoner",
-                        temperature=0,
+                        temperature=0, # Very deterministic
                         messages=self.messages)
         return completion.choices[0].message.content
 
-prompt = """
+default_system_prompt = """
 You run in a loop of Thought, Action, PAUSE, Observation.
 At the end of the loop you output an Answer
 Use Thought to describe your thoughts about the question you have been asked.
@@ -113,8 +110,9 @@ action_re = re.compile(r'^Action: (\w+): (.*)$')
 
 def query(question, max_turns=5):
     i = 0
-    my_agent = Agent(prompt)
-    next_prompt = question
+    my_agent = Agent(default_system_prompt)
+    next_prompt = question # Original question
+    # Start a loop 
     while i < max_turns:
         i += 1
         result = my_agent(next_prompt)

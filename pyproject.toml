@@ -30,6 +30,8 @@ dependencies = [
     "openai",
     "langchain",
     "langgraph",
+    "langchain-community",
+    "pygraphviz", # to draw flows and diagrams
 ]
 
 [project.urls]
