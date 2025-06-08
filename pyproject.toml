@@ -32,6 +32,7 @@ dependencies = [
     "langgraph",
     "langchain-community",
     "pygraphviz", # to draw flows and diagrams
+    "tavily-python",
 ]
 
 [project.urls]
